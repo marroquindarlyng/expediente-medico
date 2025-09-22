@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Doctor | COREHEALTH</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Tema personalizado (opcional si ya lo tienes) -->
+    <link rel="stylesheet" href="css/theme.css" />
+  </head>
+  <body class="container py-4">
+    <!-- ===========================
+       FORMULARIOS DEL DOCTOR
+  ============================ -->
+
+    <h2 class="mb-3">📅 Agendar cita</h2>
+    <form id="formAgendarCita" class="row g-3 mb-4">
+      <div class="col-md-4">
+        <label for="selectPacientes" class="form-label">Paciente</label>
+        <select id="selectPacientes" class="form-select"></select>
+      </div>
+      <div class="col-md-4">
+        <label for="fechaCita" class="form-label">Fecha</label>
+        <input type="date" id="fechaCita" class="form-control" />
+      </div>
+      <div class="col-md-4">
+        <label for="horaCita" class="form-label">Hora</label>
+        <input type="time" id="horaCita" class="form-control" />
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Agendar</button>
+      </div>
+    </form>
+
+    <h2 class="mb-3">🩺 Registrar consulta</h2>
+    <form id="formRegistrarConsulta" class="row g-3 mb-4">
+      <div class="col-md-4">
+        <label for="selectCitas" class="form-label">Cita</label>
+        <select id="selectCitas" class="form-select"></select>
+      </div>
+      <div class="col-md-4">
+        <label for="motivoConsulta" class="form-label">Motivo</label>
+        <input
+          type="text"
+          id="motivoConsulta"
+          class="form-control"
+          placeholder="Motivo de consulta"
+        />
+      </div>
+      <div class="col-md-12">
+        <label for="observacionesConsulta" class="form-label"
+          >Observaciones</label
+        >
+        <textarea
+          id="observacionesConsulta"
+          class="form-control"
+          rows="3"
+        ></textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </div>
+    </form>
+
+    <h2 class="mb-3">🧾 Registrar diagnóstico</h2>
+    <form id="formRegistrarDiagnostico" class="row g-3 mb-4">
+      <div class="col-md-6">
+        <label for="selectConsultasDiag" class="form-label">Consulta</label>
+        <select id="selectConsultasDiag" class="form-select"></select>
+      </div>
+      <div class="col-md-6">
+        <label for="selectDiagnosticos" class="form-label">Diagnóstico</label>
+        <select id="selectDiagnosticos" class="form-select"></select>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </div>
+    </form>
+
+    <h2 class="mb-3">💊 Emitir receta</h2>
+    <form id="formEmitirReceta" class="row g-3 mb-4">
+      <div class="col-md-6">
+        <label for="selectConsultasRec" class="form-label">Consulta</label>
+        <select id="selectConsultasRec" class="form-select"></select>
+      </div>
+      <div class="col-md-6">
+        <label for="selectMedicamentos" class="form-label">Medicamento</label>
+        <select id="selectMedicamentos" class="form-select"></select>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Emitir</button>
+      </div>
+    </form>
+
+    <!-- ===========================
+       TABLAS DEL DOCTOR
+  ============================ -->
+
+    <h2 class="mt-4">📋 Citas detalladas</h2>
+    <div class="row g-2 align-items-center mb-2">
+      <div class="col-sm-6">
+        <input
+          type="text"
+          id="buscarCitas"
+          class="form-control"
+          placeholder="Buscar por paciente, fecha o estado..."
+        />
+      </div>
+      <div
+        class="col-sm-6 d-flex justify-content-sm-end align-items-center gap-2"
+      >
+        <label class="m-0">Tamaño de página:</label>
+        <select
+          id="citasPageSize"
+          class="form-select form-select-sm"
+          style="width: auto"
+        >
+          <option>5</option>
+          <option selected>10</option>
+          <option>20</option>
+          <option>50</option>
+        </select>
+        <button id="citasPrev" class="btn btn-outline-primary btn-sm">
+          Anterior
+        </button>
+        <span id="citasPageInfo" class="text-muted">Página 1 de 1</span>
+        <button id="citasNext" class="btn btn-outline-primary btn-sm">
+          Siguiente
+        </button>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table id="tablaCitas" class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th data-sort="id">ID</th>
+            <th data-sort="pacienteNombre">Paciente</th>
+            <th data-sort="pacienteContacto">Contacto</th>
+            <th data-sort="fecha">Fecha</th>
+            <th data-sort="hora">Hora</th>
+            <th data-sort="estado">Estado</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h2 class="mt-4">🩺 Consultas detalladas</h2>
+    <div class="row g-2 align-items-center mb-2">
+      <div class="col-sm-6">
+        <input
+          type="text"
+          id="buscarConsultas"
+          class="form-control"
+          placeholder="Buscar por motivo, diagnóstico o receta..."
+        />
+      </div>
+      <div
+        class="col-sm-6 d-flex justify-content-sm-end align-items-center gap-2"
+      >
+        <label class="m-0">Tamaño de página:</label>
+        <select
+          id="consultasPageSize"
+          class="form-select form-select-sm"
+          style="width: auto"
+        >
+          <option>5</option>
+          <option selected>10</option>
+          <option>20</option>
+          <option>50</option>
+        </select>
+        <button id="consultasPrev" class="btn btn-outline-primary btn-sm">
+          Anterior
+        </button>
+        <span id="consultasPageInfo" class="text-muted">Página 1 de 1</span>
+        <button id="consultasNext" class="btn btn-outline-primary btn-sm">
+          Siguiente
+        </button>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table id="tablaConsultas" class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th data-sort="id">ID</th>
+            <th data-sort="citaFecha">Fecha Cita</th>
+            <th data-sort="citaHora">Hora Cita</th>
+            <th data-sort="motivo">Motivo</th>
+            <th>Diagnósticos</th>
+            <th>Recetas</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- App principal -->
+    <script src="app.js"></script>
+  </body>
+</html>

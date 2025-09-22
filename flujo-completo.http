@@ -1,0 +1,129 @@
+### 0) Health check
+# Por qué: confirmamos que el servidor está vivo antes de probar el flujo.
+GET http://localhost:3000/health
+
+
+### 1) Crear paciente
+# Por qué: necesitamos un paciente para asociar la cita y el resto del flujo.
+POST http://localhost:3000/api/pacientes
+Content-Type: application/json
+
+{
+  "nombre": "María Gómez",
+  "fechaNac": "1990-05-12",
+  "genero": "F",
+  "contacto": "maria@example.com"
+}
+
+### 1.1) Listar pacientes (opcional, para verificar)
+GET http://localhost:3000/api/pacientes
+
+
+### 2) Agendar cita
+# Por qué: la cita es el elemento operativo que luego se confirma y se atiende.
+# Nota: Reemplaza PACIENTE_ID con el id devuelto en el paso 1.
+POST http://localhost:3000/api/citas
+Content-Type: application/json
+
+{
+  "pacienteId": "PAC-mfc1n8fd-lig4w", 
+  "fecha": "2025-09-10",
+  "hora": "10:00"
+}
+
+### 2.1) Listar citas (opcional, para obtener el id de la cita)
+GET http://localhost:3000/api/citas
+
+
+### 3) Confirmar cita
+# Por qué: un paso típico operativo antes de atender (marca intención de asistir).
+# Nota: Reemplaza CITA_ID con el id devuelto en el paso 2.
+# Por qué: un paso típico operativo antes de atender (marca intención de asistir).
+# Por qué: un paso típico operativo antes de atender (marca intención de asistir).
+PATCH http://localhost:3000/api/citas/CITA-mf6es4zq-m7rh8/confirmar
+
+
+### 4) Registrar consulta
+# Por qué: la consulta captura el acto clínico (motivo, observaciones) y completa la cita.
+# Nota: Reemplaza CITA_ID con el id del paso 2 (la misma cita confirmada).
+POST http://localhost:3000/api/consultas
+Content-Type: application/json
+
+{
+  "citaId": "CITA-mfc1o65b-wkh6p",
+  "motivo": "Dolor de cabeza",
+  "observaciones": "Paciente refiere cefalea tensional desde hace 2 días."
+}
+
+### 4.1) Listar consultas (opcional, para obtener CONSULTA_ID)
+GET http://localhost:3000/api/consultas
+
+
+### 5) Ver catálogo de diagnósticos
+# Por qué: elegimos un diagnóstico válido (DIA-INT02 por ejemplo).
+GET http://localhost:3000/api/diagnosticos/catalogo
+
+
+### 6) Registrar diagnóstico en la consulta
+# Por qué: codificamos el hallazgo clínico en la consulta (trazabilidad y reportería).
+# Nota: Reemplaza CONSULTA_ID por el id devuelto en el paso 4.1 (o la respuesta del POST de consulta si te lo devolvió).
+POST http://localhost:3000/api/diagnosticos
+Content-Type: application/json
+
+{
+  "consultaId": "CONS-mf6f5dgz-nxvnq",
+  "diaId": "DIA-INT02",
+  "observaciones": "Manejo conservador inicial."
+}
+
+### 6.1) Listar diagnósticos registrados (opcional)
+GET http://localhost:3000/api/diagnosticos
+
+
+### 7) Ver catálogo de medicamentos
+# Por qué: elegimos un código de medicamento válido (por ejemplo MEDI-001).
+GET http://localhost:3000/api/recetas/catalogo
+
+
+### 8) Emitir receta
+# Por qué: la receta formaliza el tratamiento ligado a la consulta.
+# Nota: Reemplaza CONSULTA_ID con el id del paso 4.1.
+POST http://localhost:3000/api/recetas
+Content-Type: application/json
+
+{
+  "consultaId": "CONS-mf6f5dgz-nxvnq",
+  "mediId": "MEDI-001",
+  "dosis": "1 tableta cada 8h",
+  "duracion": "5 días",
+  "observaciones": "Tomar después de alimentos"
+}
+
+### 8.1) Listar recetas emitidas (opcional)
+GET http://localhost:3000/api/recetas
+
+### Ver eventos registrados
+GET http://localhost:3000/api/eventos
+
+GET http://localhost:3000/api/eventos
+
+### Auditoría por cita
+GET http://localhost:3000/api/auditoria/cita/CITA-mfc1o65b-wkh6p
+
+### Auditoría por paciente
+GET http://localhost:3000/api/auditoria/paciente/PAC-mfc1n8fd-lig4w
+
+### Reporte: Citas por estado
+GET http://localhost:3000/api/reportes/citas-por-estado
+
+### Reporte: Diagnósticos más frecuentes
+GET http://localhost:3000/api/reportes/diagnosticos-frecuentes
+
+### Reporte: Medicamentos más recetados
+GET http://localhost:3000/api/reportes/medicamentos-frecuentes
+
+### Vista combinada de citas
+GET http://localhost:3000/api/vistas/citas-detalladas
+
+### Vista combinada de consultas
+GET http://localhost:3000/api/vistas/consultas-detalladas

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COREHEALTH - Login Doctor</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Fuente Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: radial-gradient(circle, #084298 0%, #0d6efd 100%);
+        font-family: "Poppins", sans-serif;
+        color: white;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        position: relative;
+      }
+      /* Iconos de navegación */
+      .nav-icon {
+        position: absolute;
+        top: 16px;
+        font-size: 1.6rem;
+        color: white;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        transition: background-color 0.2s ease-in-out;
+      }
+      .nav-icon:hover {
+        background-color: rgba(255, 255, 255, 0.12);
+      }
+      .home-icon {
+        left: 16px;
+      }
+      .help-icon {
+        right: 16px;
+      }
+
+      .logo {
+        width: 100px;
+        margin-bottom: 1rem;
+      }
+      .login-card {
+        background-color: white;
+        color: #084298;
+        border-radius: 12px;
+        padding: 2rem;
+        max-width: 350px;
+        width: 100%;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+      .form-control {
+        border-radius: 8px;
+        padding-left: 2.5rem;
+      }
+      .input-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #0d6efd; /* Mismo color que el botón Ingresar */
+        font-size: 1.1rem;
+      }
+      .input-group {
+        position: relative;
+      }
+      .btn-login {
+        background-color: #0d6efd;
+        color: white;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 0.75rem;
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-size: 1rem;
+      }
+      .btn-login:hover {
+        background-color: #0b5ed7;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Botón Home -->
+    <a
+      href="index.html"
+      class="nav-icon home-icon"
+      aria-label="Volver al inicio"
+    >
+      <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Botón Ayuda -->
+    <a
+      href="ayuda.html"
+      class="nav-icon help-icon"
+      aria-label="Ayuda e información"
+    >
+      <i class="fas fa-question-circle"></i>
+    </a>
+
+    <!-- Tarjeta de login -->
+    <div class="login-card">
+      <img src="img/logoa.png" alt="COREHEALTH" class="logo" />
+      <h4 class="mb-4">Acceso Doctor</h4>
+
+      <form action="loby-doctor.html" method="post">
+        <!-- Usuario -->
+        <div class="mb-3 input-group">
+          <i class="fa-solid fa-user input-icon"></i>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ingrese su usuario"
+            required
+          />
+        </div>
+        <!-- Contraseña -->
+        <div class="mb-4 input-group">
+          <i class="fa-solid fa-asterisk input-icon"></i>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Ingrese su contraseña"
+            required
+          />
+        </div>
+        <!-- Botón Ingresar -->
+        <button type="submit" class="btn btn-login">
+          <i class="fa-solid fa-door-open"></i> Ingresar
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

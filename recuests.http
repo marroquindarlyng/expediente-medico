@@ -1,0 +1,86 @@
+### Health
+GET http://localhost:3000/health
+
+### Crear paciente
+POST http://localhost:3000/api/pacientes
+Content-Type: application/json
+
+{
+  "nombre": "María Gómez",
+  "fechaNac": "1990-05-12",
+  "genero": "F",
+  "contacto": "maria@example.com"
+}
+
+### Listar pacientes
+GET http://localhost:3000/api/pacientes
+
+
+### Agendar cita
+POST http://localhost:3000/api/citas
+Content-Type: application/json
+
+{
+  "pacienteId": "PAC-mf6d0v8e-rmic2",
+  "fecha": "2025-09-10",
+  "hora": "10:00"
+}
+
+### Listar citas
+GET http://localhost:3000/api/citas
+
+### Confirmar cita
+PATCH http://localhost:3000/api/citas/CITA-mf6dtiku-j0soe/confirmar
+
+### Cancelar cita
+DELETE http://localhost:3000/api/citas/CITA-mf6dtiku-j0soe
+
+
+### Registrar consulta
+POST http://localhost:3000/api/consultas
+Content-Type: application/json
+
+{
+  "citaId": "CITA-mf6es4zq-m7rh8",
+  "motivo": "Dolor de cabeza",
+  "observaciones": "Paciente refiere dolor desde hace 2 días"
+}
+
+### Listar consultas
+GET http://localhost:3000/api/consultas
+
+### Catálogo de diagnósticos
+GET http://localhost:3000/api/diagnosticos/catalogo
+
+### Registrar diagnóstico
+POST http://localhost:3000/api/diagnosticos
+Content-Type: application/json
+
+{
+  "consultaId": "CONS_ID_AQUI",
+  "diaId": "DIA-INT02",
+  "observaciones": "Recomendar hidratación y reposo"
+}
+
+### Listar diagnósticos registrados
+GET http://localhost:3000/api/diagnosticos
+
+
+### Catálogo de medicamentos
+GET http://localhost:3000/api/recetas/catalogo
+
+### Emitir receta
+POST http://localhost:3000/api/recetas
+Content-Type: application/json
+
+{
+  "consultaId": "CONS_ID_AQUI",
+  "mediId": "MEDI-001",
+  "dosis": "1 tableta cada 8h",
+  "duracion": "5 días",
+  "observaciones": "Tomar después de alimentos"
+}
+
+### Listar recetas emitidas
+GET http://localhost:3000/api/recetas
+

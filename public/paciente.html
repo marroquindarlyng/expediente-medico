@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paciente | COREHEALTH</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Tema personalizado -->
+    <link rel="stylesheet" href="css/theme.css" />
+  </head>
+  <body class="container py-4">
+    <!-- ===========================
+       FORMULARIOS DEL PACIENTE
+  ============================ -->
+
+    <h1>📅 Agendar Cita</h1>
+    <!-- Formulario de agendar cita con los mismos IDs que en index.html -->
+    <!-- Ejemplo:
+  <form id="formAgendarCita">
+    <div class="mb-3">
+      <label for="selectPacientes" class="form-label">Seleccione paciente</label>
+      <select id="selectPacientes" class="form-select"></select>
+    </div>
+    <div class="mb-3">
+      <label for="fechaCita" class="form-label">Fecha</label>
+      <input type="date" id="fechaCita" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="horaCita" class="form-label">Hora</label>
+      <input type="time" id="horaCita" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Agendar</button>
+  </form>
+  -->
+
+    <!-- ===========================
+       TABLAS DEL PACIENTE
+  ============================ -->
+
+    <!-- Mis Citas -->
+    <h1>📋 Mis Citas</h1>
+    <input
+      type="text"
+      id="buscarCitas"
+      class="form-control mb-2"
+      placeholder="Buscar por fecha o estado..."
+    />
+    <div id="citasControls" class="d-flex align-items-center gap-2 mb-2">
+      <label class="d-flex align-items-center gap-2 m-0">
+        Tamaño de página:
+        <select id="citasPageSize" class="form-select form-select-sm">
+          <option>5</option>
+          <option selected>10</option>
+          <option>20</option>
+          <option>50</option>
+        </select>
+      </label>
+      <button id="citasPrev" class="btn btn-outline-primary btn-sm">
+        Anterior
+      </button>
+      <span id="citasPageInfo" class="text-muted">Página 1 de 1</span>
+      <button id="citasNext" class="btn btn-outline-primary btn-sm">
+        Siguiente
+      </button>
+    </div>
+    <table id="tablaCitas" class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th data-sort="id">ID</th>
+          <th data-sort="fecha">Fecha</th>
+          <th data-sort="hora">Hora</th>
+          <th data-sort="estado">Estado</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- Mis Recetas -->
+    <h1>💊 Mis Recetas</h1>
+    <table id="tablaRecetas" class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Fecha</th>
+          <th>Medicamento</th>
+          <th>Indicaciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script principal -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
