@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COREHEALTH - Loby Doctor</title>
+    <title>COREHEALTH - Loby Paciente</title>
 
     <!-- Bootstrap -->
     <link
@@ -25,9 +25,9 @@
 
     <style>
       body {
-        background: radial-gradient(circle, #084298 0%, #0d6efd 100%);
+        background: radial-gradient(circle, #ffffff 0%, #e9ecef 100%);
         font-family: "Poppins", sans-serif;
-        color: white;
+        color: #0d6efd;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -43,7 +43,7 @@
         top: 16px;
         left: 16px;
         font-size: 1.6rem;
-        color: white;
+        color: #0d6efd;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
@@ -54,7 +54,7 @@
         transition: background-color 0.2s ease-in-out;
       }
       .home-icon:hover {
-        background-color: rgba(255, 255, 255, 0.12);
+        background-color: rgba(13, 110, 253, 0.1);
       }
       /* Botón Ayuda */
       .help-icon {
@@ -62,7 +62,7 @@
         top: 16px;
         right: 16px;
         font-size: 1.6rem;
-        color: white;
+        color: #0d6efd;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
@@ -73,7 +73,7 @@
         transition: background-color 0.2s ease-in-out;
       }
       .help-icon:hover {
-        background-color: rgba(255, 255, 255, 0.12);
+        background-color: rgba(13, 110, 253, 0.1);
       }
       .logo {
         width: 150px;
@@ -84,8 +84,8 @@
         font-size: 2rem;
         margin-bottom: 0.3rem;
       }
-      p {
-        font-size: 1.1rem;
+      h4 {
+        font-weight: 400;
         opacity: 0.9;
         margin-bottom: 2rem;
       }
@@ -100,21 +100,30 @@
         justify-content: center;
         gap: 0.5rem;
         text-transform: uppercase;
-      }
-      .btn-ingresar {
-        background-color: white;
-        color: #0d6efd;
-      }
-      .btn-ingresar:hover {
-        background-color: #e6e6e6;
-      }
-      .btn-registrar {
-        background-color: transparent;
-        border: 2px solid white;
+        background-color: #0d6efd;
         color: white;
+        border: none;
       }
-      .btn-registrar:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+      .btn-custom:hover {
+        background-color: #0b5ed7;
+      }
+      .btn-outline-custom {
+        min-width: 160px;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        text-transform: uppercase;
+        background-color: transparent;
+        color: #0d6efd;
+        border: 2px solid #0d6efd;
+      }
+      .btn-outline-custom:hover {
+        background-color: rgba(13, 110, 253, 0.1);
       }
       .buttons-container {
         display: flex;
@@ -136,19 +145,21 @@
     </a>
 
     <!-- Logo y textos -->
-    <img src="img/logob.png" alt="COREHEALTH" class="logo" />
-    <h1>CoreHealth</h1>
-    <p>LOBBY DOCTOR</p>
+    <img src="img/logoa.png" alt="COREHEALTH" class="logo" />
+    <h1>BIENVENIDO PACIENTE</h1>
+    <h4>¿Qué deseas hacer?</h4>
 
-    <!-- Botones uno al lado del otro -->
+    <!-- Botones -->
     <div class="buttons-container">
-      <a href="login-doctor.html" class="btn btn-custom btn-ingresar">
+      <a href="login-paciente.html" class="btn btn-custom">
         <i class="fas fa-sign-in-alt"></i> Ingresar
       </a>
-      <a href="registro-doctor.html" class="btn btn-custom btn-registrar">
-        <i class="fas fa-user-plus"></i> Registrar
+      <a href="registro-paciente.html" class="btn btn-outline-custom">
+        <i class="fas fa-user-plus"></i> Registrarme
       </a>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Botón Back -->
     <a href="index.html" class="back-icon" aria-label="Regresar">
       <i class="fas fa-arrow-left"></i>
@@ -161,7 +172,7 @@
         left: 50%;
         transform: translateX(-50%);
         font-size: 1.6rem;
-        color: white; /* Flecha blanca */
+        color: #0d6efd;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
@@ -170,11 +181,11 @@
         height: 40px;
         border-radius: 8px;
         transition: background-color 0.2s ease-in-out;
-        background-color: #0d6efd; /* Fondo azul */
+        background-color: white; /* opcional para contraste */
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       }
       .back-icon:hover {
-        background-color: #0b5ed7; /* Azul más oscuro al pasar el mouse */
+        background-color: rgba(13, 110, 253, 0.1);
       }
     </style>
   </body>
