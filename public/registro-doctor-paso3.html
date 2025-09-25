@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro Doctor - Paso 3</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Fuente Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS unificado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body class="theme-doctor">
+    <!-- Home -->
+    <a href="index.html" class="home-icon" aria-label="Volver al inicio">
+      <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Ayuda -->
+    <a href="ayuda.html" class="help-icon" aria-label="Ayuda e información">
+      <i class="fas fa-question-circle"></i>
+    </a>
+
+    <!-- Contenedor del paso -->
+    <div class="step-card">
+      <div class="step-icon"><i class="fas fa-stethoscope"></i></div>
+      <h5>Selecciona tu especialidad médica</h5>
+
+      <select class="form-control text-center">
+        <option disabled selected>Selecciona una opción</option>
+        <option>Medicina General</option>
+        <option>Pediatría</option>
+        <option>Cardiología</option>
+        <option>Ginecología</option>
+        <option>Neurología</option>
+        <option>Dermatología</option>
+        <option>Ortopedia</option>
+        <option>Otorrinolaringología</option>
+        <option>Psicología Clínica</option>
+        <option>Otra</option>
+      </select>
+
+      <!-- Flechas -->
+      <div class="nav-arrows">
+        <button
+          class="btn-prev"
+          aria-label="Retroceder"
+          onclick="location.href='registro-doctor-paso2.html'"
+        >
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <button
+          class="btn-next"
+          aria-label="Siguiente"
+          onclick="location.href='registro-doctor-paso4.html'"
+        >
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- Progreso -->
+      <div class="progress-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <!-- Botón Back fijo -->
+    <a href="loby-doctor.html" class="back-icon" aria-label="Regresar">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

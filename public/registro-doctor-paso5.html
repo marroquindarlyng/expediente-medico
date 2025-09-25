@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro Doctor - Paso 5</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Fuente Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS unificado -->
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body class="theme-doctor">
+    <!-- Home -->
+    <a href="index.html" class="home-icon" aria-label="Volver al inicio">
+      <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Ayuda -->
+    <a href="ayuda.html" class="help-icon" aria-label="Ayuda e información">
+      <i class="fas fa-question-circle"></i>
+    </a>
+
+    <!-- Contenedor del paso -->
+    <div class="step-card">
+      <div class="step-icon"><i class="fas fa-hospital-user"></i></div>
+      <h5>Selecciona tu centro de trabajo</h5>
+
+      <select class="form-control text-center">
+        <option disabled selected>Selecciona una opción</option>
+        <option>Clínica San Rafael, zona 12</option>
+        <option>Hospital Metropolitano, zona 9</option>
+        <option>Centro Médico Las Charcas, zona 11</option>
+        <option>Clínica Especializada Mixco</option>
+        <option>Hospital del Sur, Villa Nueva</option>
+        <option>Clínica Familiar San Cristóbal</option>
+        <option>Centro de Salud, zona 1</option>
+        <option>Clínica Santa Lucía, San Miguel Petapa</option>
+        <option>Hospital Privado El Francés</option>
+        <option>Clínica Médica Los Próceres</option>
+        <option>Centro Médico San José, zona 2</option>
+        <option>Clínica de Especialidades, zona 10</option>
+        <option>Hospital Regional de Escuintla</option>
+        <option>Clínica San Juan, Chimaltenango</option>
+        <option>Centro Médico Quetzaltenango</option>
+      </select>
+
+      <!-- Flechas -->
+      <div class="nav-arrows">
+        <button
+          class="btn-prev"
+          aria-label="Retroceder"
+          onclick="location.href='registro-doctor-paso4.html'"
+        >
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <button
+          class="btn-next"
+          aria-label="Siguiente"
+          onclick="location.href='registro-doctor-paso6.html'"
+        >
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- Progreso -->
+      <div class="progress-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <!-- Botón Back fijo -->
+    <a href="loby-doctor.html" class="back-icon" aria-label="Regresar">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

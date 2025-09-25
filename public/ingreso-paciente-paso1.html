@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingreso Paciente - Paso 1</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <style>
+      body {
+        background: linear-gradient(to bottom, #ffffff 0%, #e9ecef 100%);
+        font-family: "Poppins", sans-serif;
+        color: #0d6efd;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+      }
+      .step-card {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 16px;
+        max-width: 400px;
+        width: 100%;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .step-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #0d6efd;
+      }
+      select {
+        border-radius: 8px;
+        border: 2px solid #0d6efd;
+        padding: 0.75rem;
+        font-size: 1rem;
+        background-color: white;
+        color: #0d6efd;
+        width: 100%;
+        margin-top: 1rem;
+      }
+      .nav-arrows {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .btn-next {
+        background-color: #0d6efd;
+        color: #ffffff;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+      .progress-dots {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba(13, 110, 253, 0.3);
+      }
+      .dot.active {
+        background-color: #0d6efd;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Home -->
+    <a href="index.html" class="home-icon" aria-label="Inicio">
+      <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Ayuda -->
+    <a href="ayuda.html" class="help-icon" aria-label="Ayuda">
+      <i class="fas fa-question-circle"></i>
+    </a>
+
+    <!-- Contenido -->
+    <div class="step-card">
+      <div class="step-icon"><i class="fas fa-stethoscope"></i></div>
+      <h5>Selecciona la especialidad de tu cita</h5>
+
+      <select id="especialidad">
+        <option value="">-- Selecciona --</option>
+        <option value="medicina-general">Medicina General</option>
+        <option value="pediatria">Pediatría</option>
+        <option value="ginecologia">Ginecología</option>
+        <option value="cardiologia">Cardiología</option>
+        <option value="dermatologia">Dermatología</option>
+      </select>
+
+      <!-- Flecha siguiente -->
+      <div class="nav-arrows">
+        <button
+          class="btn-next"
+          aria-label="Siguiente"
+          onclick="guardarEspecialidad()"
+        >
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- Progreso -->
+      <div class="progress-dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <!-- Back fijo -->
+    <a href="loby-paciente.html" class="back-icon" aria-label="Regresar">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <script>
+      function guardarEspecialidad() {
+        const esp = document.getElementById("especialidad").value;
+        if (esp) {
+          localStorage.setItem("especialidad", esp);
+          location.href = "ingreso-paciente-paso2.html";
+        } else {
+          alert("Por favor selecciona una especialidad");
+        }
+      }
+    </script>
+  </body>
+</html>
