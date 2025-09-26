@@ -1,46 +1,53 @@
+// src/presentation/citas.routes.js
 const express = require("express");
+const pool = require("../data/db"); // conexión a MySQL
 const router = express.Router();
-const citasService = require("../business/citas.service");
 
-// Agendar cita
-router.post("/", (req, res) => {
+// GET: listar todas las citas con paciente, médico y especialidad
+router.get("/", async (req, res) => {
   try {
-    const nueva = citasService.agendarCita(req.body);
-    res.status(201).json(nueva);
+    const [rows] = await pool.query(`
+      SELECT c.id, c.fecha, c.hora, c.estado,
+             p.nombre AS paciente,
+             m.nombre AS medico,
+             e.esp_nombre AS especialidad
+      FROM citas c
+      JOIN pacientes p ON c.paciente_id = p.id
+      JOIN medicos m ON c.medico_id = m.id
+      JOIN especialidades e ON m.especialidad_id = e.id
+      ORDER BY c.fecha, c.hora
+    `);
+    res.json(rows);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    console.error("Error al obtener citas:", err);
+    res.status(500).json({ mensaje: "Error interno", error: err.message });
   }
 });
 
-// Listar citas
-router.get("/", (req, res) => {
-  res.json(citasService.listarCitas());
-});
-
-// Obtener cita por ID
-router.get("/:id", (req, res) => {
+// GET: obtener una cita por id
+router.get("/:id", async (req, res) => {
   try {
-    res.json(citasService.obtenerCitaPorId(req.params.id));
-  } catch (err) {
-    res.status(404).json({ error: err.message });
-  }
-});
+    const [rows] = await pool.query(
+      `
+      SELECT c.id, c.fecha, c.hora, c.estado,
+             p.nombre AS paciente,
+             m.nombre AS medico,
+             e.esp_nombre AS especialidad
+      FROM citas c
+      JOIN pacientes p ON c.paciente_id = p.id
+      JOIN medicos m ON c.medico_id = m.id
+      JOIN especialidades e ON m.especialidad_id = e.id
+      WHERE c.id = ?
+    `,
+      [req.params.id]
+    );
 
-// Confirmar cita
-router.patch("/:id/confirmar", (req, res) => {
-  try {
-    res.json(citasService.confirmarCita(req.params.id));
+    if (rows.length === 0)
+      return res.status(404).json({ mensaje: "Cita no encontrada" });
+    res.json(rows[0]);
   } catch (err) {
-    res.status(404).json({ error: err.message });
-  }
-});
-
-// Cancelar cita
-router.delete("/:id", (req, res) => {
-  try {
-    res.json(citasService.cancelarCita(req.params.id));
-  } catch (err) {
-    res.status(404).json({ error: err.message });
+    console.error("Error al obtener cita:", err);
+    res.status(500).json({ mensaje: "Error interno", error: err.message });
   }
 });
 
