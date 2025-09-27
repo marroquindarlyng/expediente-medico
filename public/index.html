@@ -1,4 +1,3 @@
-require('dotenv').config();
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -149,4 +148,29 @@ require('dotenv').config();
       </a>
     </div>
   </body>
+
+  <script>
+    // Consumir el endpoint del backend
+    fetch("/api/citas")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Citas desde el backend:", data);
+
+        // Ejemplo: mostrar en pantalla
+        const container = document.createElement("div");
+        container.innerHTML = "<h2>Próximas citas</h2>";
+        const ul = document.createElement("ul");
+
+        data.forEach((cita) => {
+          const li = document.createElement("li");
+          li.textContent = `${cita.fecha} - ${cita.hora} | ${cita.paciente} con ${cita.medico} (${cita.especialidad})`;
+          ul.appendChild(li);
+        });
+
+        container.appendChild(ul);
+        document.body.appendChild(container);
+      })
+      .catch((err) => console.error("Error cargando citas:", err));
+  </script>
+  <script src="public/app.js"></script>
 </html>
